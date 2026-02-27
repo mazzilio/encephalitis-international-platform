@@ -1,0 +1,42 @@
+Using AWS profile: hackathon
+Region: us-west-2
+
+🚀 TeamBeacon Agent Quick Start
+
+✅ AWS Account: 655741478169
+   User/Role: arn:aws:sts::655741478169:assumed-role/WSParticipantRole/Participant
+
+Step 1: Creating IAM role...
+✅ Using existing IAM role: arn:aws:iam::655741478169:role/TeamBeaconQuickStartAgentRole
+
+Step 2: Creating Bedrock Agent...
+✅ Using existing agent: 28QQU2KK4R
+
+Step 3: Preparing agent...
+🔄 Preparing agent...
+   Status: PREPARING...
+✅ Agent prepared and ready!
+
+Step 4: Creating agent alias...
+✅ Using existing alias: FDYBP6PBAS
+
+Step 5: Testing agent...
+
+🧪 Testing agent with sample query...
+❌ Test failed: An error occurred (validationException) when calling the InvokeAgent operation: Invocation of model ID anthropic.claude-sonnet-4-5-20250929-v1:0 with on-demand throughput isn’t supported. Retry your request with the ID or ARN of an inference profile that contains this model. (Service: BedrockRuntime, Status Code: 400, Request ID: 21db9f7e-2a56-42b8-87bf-4855f3c4dae0) (SDK Attempt Count: 1)
+
+============================================================
+✅ AGENT READY!
+============================================================
+
+Agent ID: 28QQU2KK4R
+Alias ID: FDYBP6PBAS
+Region: us-west-2
+Profile: hackathon
+
+You can now invoke this agent from your Lambda function!
+
+Next steps:
+1. Update lambda/unified_handler.py to use agent_id: 28QQU2KK4R
+2. Test with: python agent/test_agent.py --profile hackathon
+3. See full spec in .kiro/specs/bedrock-agent-core/ for advanced features

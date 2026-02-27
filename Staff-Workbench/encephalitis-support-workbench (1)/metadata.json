@@ -1,0 +1,5 @@
+{
+  "name": "Encephalitis Support Workbench",
+  "description": "A rapid response generator for charity staff to create personalized support packs and email drafts using Gemini.",
+  "requestFramePermissions": []
+}

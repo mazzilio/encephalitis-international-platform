@@ -1,0 +1,34 @@
+
+================================================================================
+RESOURCE CLASSIFICATION PIPELINE - RESILIENT PROCESSING
+================================================================================
+✅ Initialized with Claude Opus 4.5 (Global)
+   Model: global.anthropic.claude-opus-4-5-20251101-v1:0
+   Region: us-west-2
+   Progress file: progress_checkpoint_cached.json
+   Resilient mode: ✅ Enabled (auto-save every 5 items)
+   Network retry: ✅ Enabled (3 attempts with backoff)
+   Auto-resume: ✅ Enabled (from checkpoint)
+
+
+🧪 TEST MODE: Processing 5 items per source (15 total)
+   Time estimate: ~5 minutes
+   Cost estimate: ~$0.30
+
+📂 CACHED MODE: Using pre-scraped web data
+   This saves time and avoids API rate limits!
+
+💡 RESILIENT MODE TIPS:
+   • Progress is saved every 5 items
+   • You can safely interrupt (Ctrl+C) and resume later
+   • Network errors are automatically retried
+   • To resume: just run the same command again
+
+📖 For more information:
+   • Processing guide: PROCESSING_GUIDE.md
+   • Resilient mode: RESILIENT_PROCESSING.md
+   • Quick start: QUICK_START.md
+
+================================================================================
+
+Press ENTER to start processing (or Ctrl+C to cancel)...

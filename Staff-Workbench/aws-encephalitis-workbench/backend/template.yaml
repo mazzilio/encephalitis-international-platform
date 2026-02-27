@@ -1,0 +1,116 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Encephalitis Support Workbench Backend
+
+Globals:
+  Function:
+    Timeout: 60
+    Runtime: nodejs20.x
+    MemorySize: 512
+    Environment:
+      Variables:
+        BEDROCK_REGION: !Ref BedrockRegion
+        BEDROCK_MODEL_ID: !Ref BedrockModelId
+        S3_BUCKET_NAME: !Ref KnowledgeBaseBucket
+
+Parameters:
+  BedrockRegion:
+    Type: String
+    Default: us-east-1
+    Description: AWS region for Bedrock
+  BedrockModelId:
+    Type: String
+    Default: anthropic.claude-3-5-sonnet-20241022-v2:0
+    Description: Bedrock model ID
+
+Resources:
+  # S3 Bucket for Knowledge Base
+  KnowledgeBaseBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-knowledge-base
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders: ['*']
+            AllowedMethods: [GET, PUT, POST]
+            AllowedOrigins: ['*']
+            MaxAge: 3000
+
+  # API Gateway
+  ApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
+        AllowOrigin: "'*'"
+
+  # Lambda Function: Suggest Resources
+  SuggestResourcesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: suggestResources.handler
+      Policies:
+        - Statement:
+          - Effect: Allow
+            Action:
+              - bedrock:InvokeModel
+            Resource: !Sub arn:aws:bedrock:${BedrockRegion}::foundation-model/*
+          - Effect: Allow
+            Action:
+              - s3:GetObject
+            Resource: !Sub ${KnowledgeBaseBucket.Arn}/*
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /suggest-resources
+            Method: POST
+
+  # Lambda Function: Generate Draft
+  GenerateDraftFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: generateDraft.handler
+      Policies:
+        - Statement:
+          - Effect: Allow
+            Action:
+              - bedrock:InvokeModel
+            Resource: !Sub arn:aws:bedrock:${BedrockRegion}::foundation-model/*
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /generate-draft
+            Method: POST
+
+  # Lambda Function: Upload Knowledge Base
+  UploadKnowledgeBaseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: uploadKnowledgeBase.handler
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref KnowledgeBaseBucket
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGateway
+            Path: /upload-knowledge-base
+            Method: POST
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway endpoint URL
+    Value: !Sub https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/prod
+  KnowledgeBaseBucket:
+    Description: S3 bucket for knowledge base
+    Value: !Ref KnowledgeBaseBucket

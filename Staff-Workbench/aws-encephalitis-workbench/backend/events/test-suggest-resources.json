@@ -1,0 +1,9 @@
+{
+  "body": "{\"userProfile\":\"Sarah Johnson, Patient. Diagnosis: Anti-NMDAR Encephalitis. Stage: Early Recovery. Key Concerns: Memory Loss, Fatigue, Return to Work\",\"databaseContent\":null}",
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "path": "/suggest-resources",
+  "isBase64Encoded": false
+}

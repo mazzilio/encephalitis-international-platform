@@ -1,0 +1,7 @@
+{
+  "agent_id": "TANBRPMHVE",
+  "alias_id": "1OXD23HRL1",
+  "role_arn": "arn:aws:iam::655741478169:role/TeamBeaconAgentCoreRole",
+  "agent_name": "TeamBeacon-AgentCore-Basic",
+  "region": "us-west-2"
+}

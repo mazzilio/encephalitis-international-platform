@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+scripts/__pycache__/
+
+# AWS Credentials (NEVER commit these!)
+*.pem
+*.key
+*credentials*
+processing/run_resilient.sh
+
+# Output files (large files)
+output/
+*.json
+!requirements.json
+
+# Data files (Excel with potentially sensitive data)
+data/*.xlsx
+!data/README.md
+
+# Logs and temporary files
+logs/*.log
+temp/*.pid
+temp/*.json
+*.log
+processing.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+~$*
+
+# Keep directory structure
+!logs/.gitkeep
+!temp/.gitkeep
+!output/.gitkeep

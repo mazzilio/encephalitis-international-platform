@@ -1,0 +1,45 @@
+# Environment variables
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# SAM
+.aws-sam/
+samconfig.toml.bak
+
+# Lambda deployment packages
+*.zip
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test audio files
+test/transcribe/*.wav
+test/transcribe/*.aiff
+test/transcribe/*-base64.txt
+
+# Archived/Legacy files
+archived*/
+schemas/
+express-app/
+deployment/
+.github/
+

@@ -1,0 +1,90 @@
+{
+  "patient_memory": {
+    "userRole": "patient",
+    "userQuery": "I am experiencing memory issues and need help",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "long_term_management",
+      "concerns": ["memory"],
+      "ageGroup": "adult"
+    },
+    "limit": 10
+  },
+  "parent_school": {
+    "userRole": "parent",
+    "userQuery": "My child is having trouble at school after encephalitis",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "long_term_management",
+      "concerns": ["school", "behaviour"],
+      "ageGroup": "child"
+    },
+    "limit": 10
+  },
+  "parent_seizures": {
+    "userRole": "parent",
+    "userQuery": "My child is having seizures at school",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "acute_hospital",
+      "concerns": ["seizures", "school"],
+      "ageGroup": "child"
+    },
+    "limit": 10
+  },
+  "caregiver_legal": {
+    "userRole": "caregiver",
+    "userQuery": "What legal support is available for encephalitis patients?",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "long_term_management",
+      "concerns": ["legal"],
+      "ageGroup": "adult"
+    },
+    "limit": 10
+  },
+  "professional_research": {
+    "userRole": "professional",
+    "userQuery": "Latest research on autoimmune encephalitis treatment",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "acute_hospital",
+      "concerns": ["research"],
+      "ageGroup": "adult"
+    },
+    "limit": 15
+  },
+  "patient_prediagnosis": {
+    "userRole": "patient",
+    "userQuery": "I am experiencing strange symptoms and waiting for diagnosis",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "pre_diagnosis",
+      "concerns": ["behaviour", "memory"],
+      "ageGroup": "adult"
+    },
+    "limit": 10
+  },
+  "patient_nmda": {
+    "userRole": "patient",
+    "userQuery": "Information about NMDA receptor encephalitis",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "acute_hospital",
+      "concerns": ["research"],
+      "ageGroup": "adult"
+    },
+    "limit": 10
+  },
+  "caregiver_support": {
+    "userRole": "caregiver",
+    "userQuery": "I need support and self-care resources as a caregiver",
+    "userQueryType": "Text",
+    "userData": {
+      "stage": "early_recovery",
+      "concerns": [],
+      "ageGroup": "adult"
+    },
+    "limit": 10
+  }
+}

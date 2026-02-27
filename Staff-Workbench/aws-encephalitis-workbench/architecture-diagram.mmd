@@ -1,0 +1,74 @@
+graph TB
+    subgraph Users["👥 User Layer"]
+        Desktop["🖥️ Desktop Browser"]
+        Tablet["📱 Tablet Browser"]
+        Mobile["📱 Mobile Browser"]
+    end
+
+    subgraph CDN["🌐 Content Delivery Network"]
+        Amplify["AWS Amplify<br/>Static Hosting + CI/CD"]
+        CloudFront["Amazon CloudFront<br/>Global CDN<br/>SSL/TLS"]
+    end
+
+    subgraph API["🔌 API Layer"]
+        APIGateway["Amazon API Gateway<br/>REST API<br/><br/>Endpoints:<br/>• POST /suggest-resources<br/>• POST /generate-draft<br/>• POST /upload-knowledge-base"]
+    end
+
+    subgraph Compute["⚡ Serverless Compute"]
+        Lambda1["AWS Lambda<br/>suggestResources<br/><br/>Node.js 20.x<br/>512 MB RAM<br/>60s timeout"]
+        Lambda2["AWS Lambda<br/>generateDraft<br/><br/>Node.js 20.x<br/>512 MB RAM<br/>60s timeout"]
+        Lambda3["AWS Lambda<br/>uploadKnowledgeBase<br/><br/>Node.js 20.x<br/>512 MB RAM<br/>60s timeout"]
+    end
+
+    subgraph AI["🤖 AI Services"]
+        Bedrock["Amazon Bedrock<br/>Claude 3.5 Sonnet<br/><br/>Model ID:<br/>anthropic.claude-3-5-sonnet-20241022-v2:0<br/><br/>• 200K context window<br/>• JSON responses<br/>• System prompts"]
+    end
+
+    subgraph Storage["💾 Storage"]
+        S3["Amazon S3<br/>Knowledge Base Bucket<br/><br/>Structure:<br/>knowledge-base/<br/>  └── *.json"]
+    end
+
+    subgraph Monitoring["📊 Monitoring & Logging"]
+        CloudWatch["Amazon CloudWatch<br/><br/>• Lambda metrics<br/>• API Gateway logs<br/>• Custom dashboards<br/>• Alarms"]
+        CloudTrail["AWS CloudTrail<br/><br/>• API audit logs<br/>• Compliance tracking"]
+    end
+
+    subgraph Security["🔒 Security & IAM"]
+        IAM["AWS IAM<br/><br/>Lambda Execution Roles:<br/>• bedrock:InvokeModel<br/>• s3:GetObject<br/>• s3:PutObject<br/>• logs:CreateLogGroup"]
+    end
+
+    Desktop --> Amplify
+    Tablet --> Amplify
+    Mobile --> Amplify
+    
+    Amplify --> CloudFront
+    CloudFront --> APIGateway
+    
+    APIGateway --> Lambda1
+    APIGateway --> Lambda2
+    APIGateway --> Lambda3
+    
+    Lambda1 --> Bedrock
+    Lambda2 --> Bedrock
+    Lambda1 --> S3
+    Lambda3 --> S3
+    
+    Lambda1 -.-> CloudWatch
+    Lambda2 -.-> CloudWatch
+    Lambda3 -.-> CloudWatch
+    APIGateway -.-> CloudWatch
+    
+    Lambda1 -.-> IAM
+    Lambda2 -.-> IAM
+    Lambda3 -.-> IAM
+    
+    APIGateway -.-> CloudTrail
+    
+    style Users fill:#e1f5ff
+    style CDN fill:#fff4e1
+    style API fill:#ffe1f5
+    style Compute fill:#e1ffe1
+    style AI fill:#f5e1ff
+    style Storage fill:#ffe1e1
+    style Monitoring fill:#f0f0f0
+    style Security fill:#fff9e1

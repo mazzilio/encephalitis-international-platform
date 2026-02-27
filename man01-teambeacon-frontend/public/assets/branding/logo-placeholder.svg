@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" fill="none">
+  <!-- Temporary placeholder - Replace with official Encephalitis International logo -->
+  <rect width="400" height="80" fill="#f0f0f0" rx="4"/>
+  <text x="200" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">
+    Encephalitis International
+  </text>
+  <text x="200" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">
+    The brain inflammation charity
+  </text>
+</svg>

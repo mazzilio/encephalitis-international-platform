@@ -1,0 +1,9 @@
+{
+  "body": "{\"userProfile\":\"Sarah Johnson, Patient. Diagnosis: Anti-NMDAR Encephalitis. Stage: Early Recovery. Key Concerns: Memory Loss, Fatigue, Return to Work\",\"selectedResources\":[{\"id\":\"1\",\"title\":\"Understanding Memory Problems After Encephalitis\",\"excerpt\":\"A comprehensive guide to memory challenges during recovery.\",\"type\":\"PDF\",\"timeToRead\":\"15 min\",\"matchReason\":\"Directly addresses memory loss concerns\",\"url\":\"https://encephalitis.info/memory-guide\"},{\"id\":\"2\",\"title\":\"Managing Fatigue in Recovery\",\"excerpt\":\"Practical strategies for dealing with post-encephalitis fatigue.\",\"type\":\"Article\",\"timeToRead\":\"10 min\",\"matchReason\":\"Specific to fatigue management\",\"url\":\"https://encephalitis.info/fatigue-management\"},{\"id\":\"3\",\"title\":\"Return to Work: A Step-by-Step Guide\",\"excerpt\":\"How to navigate returning to employment after encephalitis.\",\"type\":\"Video\",\"timeToRead\":\"20 min\",\"matchReason\":\"Addresses return to work concerns\",\"url\":\"https://encephalitis.info/return-to-work\"}]}",
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "path": "/generate-draft",
+  "isBase64Encoded": false
+}
